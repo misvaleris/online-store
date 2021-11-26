@@ -1,4 +1,10 @@
 package by.goods.categories;
 
-public class Bike {
+import by.goods.Category;
+
+public class Bike extends Category {
+
+    public Bike(String name) {
+        super(name);
+    }
 }

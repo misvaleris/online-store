@@ -11,5 +11,11 @@
 
     <artifactId>consoleApp</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>by.issoft</groupId>
+            <artifactId>store</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

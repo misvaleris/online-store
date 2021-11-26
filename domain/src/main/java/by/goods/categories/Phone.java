@@ -1,4 +1,9 @@
 package by.goods.categories;
 
-public class Phone {
+import by.goods.Category;
+
+public class Phone extends Category {
+    public Phone(String name) {
+        super(name);
+    }
 }
