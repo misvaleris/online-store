@@ -1,4 +1,4 @@
-package by.goods;
+package by.issoft.domain;
 import java.util.ArrayList;
 import java.util.List;
 

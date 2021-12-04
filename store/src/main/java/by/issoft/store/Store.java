@@ -1,6 +1,6 @@
-package by.store;
+package by.issoft.store;
 
-import by.goods.Category;
+import by.issoft.domain.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ public class Store {
 
     private List<Category> categories = new ArrayList<Category>();
 
-    public void addCategory(Category category) {
-        categories.add(category);
+    public void addCategories(List <Category> categories) {
+        this.categories.addAll(categories);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package by.goods;
+package by.issoft.domain;
 
 public class Product {
     private String name;

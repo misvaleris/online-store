@@ -1,15 +1,19 @@
-package by.storeApp;
+package by.issoft.consoleApp;
 
-import by.store.RandomStorePopulator;
-import by.store.Store;
+import by.issoft.domain.Category;
+import by.issoft.store.RandomStorePopulator;
+import by.issoft.store.Store;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class StoreApp {
 
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator();
-        Store store = randomStorePopulator.generateStore();
+        List<Category> categories = randomStorePopulator.generateCategories();
+        Store store = new Store();
+        store.addCategories(categories);
         System.out.println(store);
     }
 }

@@ -1,12 +1,14 @@
-package by.store;
+package by.issoft.store;
 
-import by.goods.Category;
-import by.goods.Product;
+import by.issoft.domain.Category;
+import by.issoft.domain.Product;
 import com.github.javafaker.Faker;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static org.reflections.scanners.Scanners.SubTypes;
@@ -29,24 +31,23 @@ public class RandomStorePopulator {
         }
     }
 
-    public Store generateStore() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public List<Category> generateCategories() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
-        Store store = new Store();
+        List<Category> categories= new ArrayList<Category>();
 
-        Reflections reflections = new Reflections("by.goods");
+        Reflections reflections = new Reflections("by.issoft.domain");
         Set<Class<?>> subTypes =
                 reflections.get(SubTypes.of(Category.class).asClass());
 
         for (Class<?> clazz : subTypes) {
 
-            Constructor<?> constructor = clazz.getConstructor(String.class);
-            String categoryName = clazz.getSimpleName();
-            Category category = (Category) constructor.newInstance(categoryName);
+            Constructor<?> constructor = clazz.getConstructor();
+            Category category = (Category) constructor.newInstance();
 
             populateCategoryWithProducts(category);
-            store.addCategory(category);
+            categories.add(category);
         }
 
-        return store;
+        return categories;
     }
 }
