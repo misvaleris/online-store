@@ -11,6 +11,18 @@ public class Product {
         this.price = price;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public int getRate() {
+        return this.rate;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
     @Override
     public String toString() {
         return "Product " +
