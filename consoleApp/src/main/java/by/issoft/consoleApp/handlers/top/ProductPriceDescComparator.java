@@ -1,4 +1,4 @@
-package by.issoft.consoleApp;
+package by.issoft.consoleApp.handlers.top;
 
 import by.issoft.domain.Product;
 
