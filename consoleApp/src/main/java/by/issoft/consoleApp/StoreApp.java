@@ -12,14 +12,15 @@ import java.util.Scanner;
 
 public class StoreApp {
 
+    private static final RandomStorePopulator POPULATOR = RandomStorePopulator.getInstance();
+    private static final CommandHandler COMMAND_HANDLER = CommandHandler.getInstance();
+
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 
-        RandomStorePopulator randomStorePopulator = new RandomStorePopulator();
-        List<Category> categories = randomStorePopulator.generateCategories();
-        Store store = new Store();
-        store.addCategories(categories);
-
-        CommandHandler commandHandler = new CommandHandler();
+        List<Category> categories = POPULATOR.generateCategories();
+        Store store = Store.builder()
+                .categories(categories)
+                .build();
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
@@ -27,7 +28,7 @@ public class StoreApp {
                 String command = scanner.nextLine();
                 System.out.printf("Your command: %s \n", command);
 
-                commandHandler.handleCommand(command, store);
+                COMMAND_HANDLER.handleCommand(command, store);
             }
         } catch (QuitProgramException e) {
             System.out.println(e.getMessage());
