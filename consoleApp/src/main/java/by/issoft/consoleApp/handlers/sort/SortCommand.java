@@ -1,8 +1,7 @@
 package by.issoft.consoleApp.handlers.sort;
 
 import by.issoft.consoleApp.StoreApp;
-import by.issoft.consoleApp.handlers.MyHandler;
-import by.issoft.domain.Category;
+import by.issoft.consoleApp.handlers.AppCommand;
 import by.issoft.domain.Product;
 import by.issoft.store.Store;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,28 +10,27 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
+import java.util.Map;
 
-public class SortHandler implements MyHandler {
+public class SortCommand implements AppCommand {
+    private final static XmlMapper XML_MAPPER = new XmlMapper();
+
     @Override
     public void execute(Store store) {
-        Comparator<Product> resultComparator = getProductComparator();
+        Map<String, String> productSortConfig = getProductSortConfig();
+        Comparator<Product> resultComparator = getProductComparator(productSortConfig);
 
-        store.getCategories()
-                .stream()
-                .map(Category::getProducts)
-                .flatMap(List::stream)
-                .sorted(resultComparator)
+        prepareSortProductList(store, resultComparator)
                 .forEach(System.out::println);
     }
 
-    private Comparator<Product> getProductComparator() {
-        ProductSortConfig value = getProductSortConfig();
+    private Comparator<Product> getProductComparator(Map<String, String> productSortConfig) {
 
-        boolean sortProductNameAsc = "asc".equals(value.getNameSortConfig());
-        boolean sortProductPriceAsc = "asc".equals(value.getPriceSortConfig());
-        boolean sortProductRateAsc = "asc".equals(value.getRateSortConfig());
+        boolean sortProductNameAsc = "asc".equals(productSortConfig.get("name"));
+        boolean sortProductPriceAsc = "asc".equals(productSortConfig.get("price"));
+        boolean sortProductRateAsc = "asc".equals(productSortConfig.get("rate"));
 
         Comparator<Product> nameComparator = Comparator.comparing(Product::getName);
         if (!sortProductNameAsc) {
@@ -52,7 +50,7 @@ public class SortHandler implements MyHandler {
                 .thenComparing(rateComparator);
     }
 
-    private ProductSortConfig getProductSortConfig() {
+    private Map<String, String> getProductSortConfig() {
         String xml = null;
         try {
             File file = getFileFromResource();
@@ -61,12 +59,11 @@ public class SortHandler implements MyHandler {
             e.printStackTrace();
         }
 
-        XmlMapper xmlMapper = new XmlMapper();
-        ProductSortConfig value = null;
+        Map<String, String> value;
         try {
-            value = xmlMapper.readValue(xml, ProductSortConfig.class);
+            value = XML_MAPPER.readValue(xml, Map.class);
         } catch (JsonProcessingException e) {
-            value = new ProductSortConfig();
+            value = Collections.emptyMap();
         }
         return value;
     }

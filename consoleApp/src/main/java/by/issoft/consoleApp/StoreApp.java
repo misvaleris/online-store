@@ -6,9 +6,7 @@ import by.issoft.domain.Category;
 import by.issoft.store.RandomStorePopulator;
 import by.issoft.store.Store;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Scanner;
 
