@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class StoreApp {
 
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-
         RandomStorePopulator randomStorePopulator = new RandomStorePopulator();
         List<Category> categories = randomStorePopulator.generateCategories();
         Store store = new Store();
@@ -27,7 +26,8 @@ public class StoreApp {
                 String command = scanner.nextLine();
                 System.out.printf("Your command: %s \n", command);
 
-                commandHandler.handleCommand(command, store);
+                String result = commandHandler.handleCommand(command, store);
+                System.out.println(result);
             }
         } catch (QuitProgramException e) {
             System.out.println(e.getMessage());

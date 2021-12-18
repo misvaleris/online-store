@@ -18,8 +18,8 @@ public class CommandHandler {
        put("quit", new QuitCommand());
     }};
 
-    public void handleCommand(String commandName, Store store){
+    public String handleCommand(String commandName, Store store){
         AppCommand command = COMMAND_LIST.getOrDefault(commandName, COMMAND_LIST.get(""));
-        command.execute(store);
+        return command.execute(store);
     }
 }

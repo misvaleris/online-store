@@ -1,13 +1,21 @@
 package by.issoft.consoleApp.handlers.top;
 
-import by.issoft.consoleApp.handlers.AppCommand;
-import by.issoft.store.Store;
+import by.issoft.consoleApp.handlers.SortProductsCommand;
+import by.issoft.domain.Product;
 
-public class TopCommand implements AppCommand {
+import java.util.Collections;
+import java.util.Map;
+import java.util.stream.Stream;
+
+public class TopCommand extends SortProductsCommand {
+
     @Override
-    public void execute(Store store) {
-        prepareSortProductList(store, new ProductPriceDescComparator())
-                .limit(5)
-                .forEach(System.out::println);
+    protected Map<String, String> getComparatorConfig() {
+        return Collections.singletonMap("price", "desc");
+    }
+
+    @Override
+    protected Stream<Product> finallyModifyStream(Stream<Product> sortProductsStream) {
+        return sortProductsStream.limit(5);
     }
 }
