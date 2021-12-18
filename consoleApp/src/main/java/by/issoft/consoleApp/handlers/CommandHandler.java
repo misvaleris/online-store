@@ -4,7 +4,6 @@ import by.issoft.consoleApp.handlers.print.PrintCommand;
 import by.issoft.consoleApp.handlers.quit.QuitCommand;
 import by.issoft.consoleApp.handlers.sort.SortCommand;
 import by.issoft.consoleApp.handlers.top.TopCommand;
-import by.issoft.store.RandomStorePopulator;
 import by.issoft.store.Store;
 
 import java.util.HashMap;
@@ -27,8 +26,8 @@ public class CommandHandler {
         return instance;
     }
 
-    public void handleCommand(String commandName, Store store){
+    public String handleCommand(String commandName, Store store){
         AppCommand command = COMMAND_LIST.getOrDefault(commandName, COMMAND_LIST.get(""));
-        command.execute(store);
+        return command.execute(store);
     }
 }

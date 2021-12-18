@@ -5,7 +5,7 @@ import by.issoft.store.Store;
 
 public class QuitCommand implements AppCommand {
     @Override
-    public void execute(Store store) {
+    public String execute(Store store) {
         throw new QuitProgramException();
     }
 }

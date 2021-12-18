@@ -5,7 +5,7 @@ import by.issoft.store.Store;
 
 public class PrintCommand implements AppCommand {
     @Override
-    public void execute(Store store) {
-        System.out.println(store);
+    public String execute(Store store) {
+        return store.toString();
     }
 }
