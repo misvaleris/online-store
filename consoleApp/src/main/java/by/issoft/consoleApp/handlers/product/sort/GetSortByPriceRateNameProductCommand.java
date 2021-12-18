@@ -1,7 +1,7 @@
-package by.issoft.consoleApp.handlers.sort;
+package by.issoft.consoleApp.handlers.product.sort;
 
 import by.issoft.consoleApp.StoreApp;
-import by.issoft.consoleApp.handlers.SortProductsCommand;
+import by.issoft.consoleApp.handlers.product.SortProductsCommand;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
-public class SortCommand extends SortProductsCommand {
+public class GetSortByPriceRateNameProductCommand extends SortProductsCommand {
     private final static XmlMapper XML_MAPPER = new XmlMapper();
 
     @Override

@@ -24,12 +24,14 @@ public class StoreApp {
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
-                System.out.print("Put your command here:");
-                String command = scanner.nextLine();
-                System.out.printf("Your command: %s \n", command);
+                System.out.print("Try to put your command here:");
+                if (scanner.hasNext()) {
+                    String command = scanner.nextLine();
+                    System.out.printf("Your command: %s \n", command);
 
-                String result = COMMAND_HANDLER.handleCommand(command, store);
-                System.out.println(result);
+                    String result = COMMAND_HANDLER.handleCommand(command, store);
+                    System.out.println(result);
+                }
             }
         } catch (QuitProgramException e) {
             System.out.println(e.getMessage());

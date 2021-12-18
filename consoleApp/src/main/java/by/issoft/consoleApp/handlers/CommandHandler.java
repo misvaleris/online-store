@@ -1,9 +1,10 @@
 package by.issoft.consoleApp.handlers;
 
-import by.issoft.consoleApp.handlers.print.PrintCommand;
+import by.issoft.consoleApp.handlers.order.CreateOrderCommand;
+import by.issoft.consoleApp.handlers.store.print.PrintStoreCommand;
 import by.issoft.consoleApp.handlers.quit.QuitCommand;
-import by.issoft.consoleApp.handlers.sort.SortCommand;
-import by.issoft.consoleApp.handlers.top.TopCommand;
+import by.issoft.consoleApp.handlers.product.sort.GetSortByPriceRateNameProductCommand;
+import by.issoft.consoleApp.handlers.product.top.GetTop5ByPriceProductCommand;
 import by.issoft.store.Store;
 
 import java.util.HashMap;
@@ -13,10 +14,11 @@ public class CommandHandler {
     private static CommandHandler instance;
     private final static Map<String, AppCommand> COMMAND_LIST = new HashMap<String, AppCommand>(){{
        put("", new EmptyCommand());
-       put("sort", new SortCommand());
-       put("top", new TopCommand());
-       put("print", new PrintCommand());
+       put("sort", new GetSortByPriceRateNameProductCommand());
+       put("top", new GetTop5ByPriceProductCommand());
+       put("print", new PrintStoreCommand());
        put("quit", new QuitCommand());
+       put("create-order", new CreateOrderCommand());
     }};
 
     public static synchronized CommandHandler getInstance() {

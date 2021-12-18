@@ -29,11 +29,11 @@ public class RandomStorePopulator {
     }
 
     public void populateCategoryWithProducts(Category category) {
-
         int numberOfProducts = FAKER.number().numberBetween(2, 10);
-
+        long baseProductIdPart = category.getId() * 10;
         for (int i = 0; i < numberOfProducts; i++) {
             Product newProduct = new Product(
+                    baseProductIdPart + i,
                     FAKER.name().title(),
                     FAKER.number().numberBetween(1, 10),
                     FAKER.number().randomDouble(2, 1, 10)
@@ -44,7 +44,7 @@ public class RandomStorePopulator {
 
     public List<Category> generateCategories() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
-        List<Category> categories = new ArrayList<Category>();
+        List<Category> categories = new ArrayList<>();
 
         Reflections reflections = new Reflections("by.issoft.domain");
         Set<Class<?>> subTypes =
