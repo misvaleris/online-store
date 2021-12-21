@@ -1,0 +1,58 @@
+package by.issoft.consoleApp.handlers.sort;
+
+import by.issoft.consoleApp.StoreApp;
+import by.issoft.consoleApp.handlers.SortProductsCommand;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Collections;
+import java.util.Map;
+
+public class SortCommand extends SortProductsCommand {
+    private final static XmlMapper XML_MAPPER = new XmlMapper();
+
+    @Override
+    protected Map<String, String> getComparatorConfig() {
+        String xml = null;
+        try {
+            File file = getFileFromResource();
+            xml = inputStreamToString(new FileInputStream(file));
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
+
+        Map<String, String> value;
+        try {
+            value = XML_MAPPER.readValue(xml, Map.class);
+        } catch (JsonProcessingException e) {
+            value = Collections.emptyMap();
+        }
+        return value;
+    }
+
+
+    private String inputStreamToString(InputStream is) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        String line;
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        while ((line = br.readLine()) != null) {
+            sb.append(line);
+        }
+        br.close();
+        return sb.toString();
+    }
+
+    private File getFileFromResource() throws URISyntaxException {
+
+        ClassLoader classLoader = StoreApp.class.getClassLoader();
+        URL resource = classLoader.getResource("sort.xml");
+        if (resource == null) {
+            throw new IllegalArgumentException("file not found! " + "sort.xml");
+        } else {
+            return new File(resource.toURI());
+        }
+    }
+}

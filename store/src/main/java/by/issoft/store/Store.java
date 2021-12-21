@@ -14,6 +14,10 @@ public class Store {
         this.categories.addAll(categories);
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     @Override
     public String toString() {
         return "\n" + "Online Store" +

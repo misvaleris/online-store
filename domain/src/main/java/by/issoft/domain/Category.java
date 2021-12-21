@@ -14,6 +14,10 @@ public abstract class Category {
         products.add(product);
     }
 
+    public List<Product> getProducts(){
+        return this.products;
+    }
+
     @Override
     public String toString() {
         return "\n" +"**** " + name + " ****" + "\n" +
