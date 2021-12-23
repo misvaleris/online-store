@@ -8,9 +8,13 @@ import java.util.List;
 
 public class Store {
 
+    private Store() {
+
+    }
+
     private List<Category> categories = new ArrayList<Category>();
 
-    public void addCategories(List <Category> categories) {
+    public void addCategories(List<Category> categories) {
         this.categories.addAll(categories);
     }
 
@@ -24,5 +28,25 @@ public class Store {
                 " " + "has the following categories today:" + "\n"
                 + "________________________________________________"
                 + "\n" + categories;
+    }
+
+    public static Builder builder() {
+        return new Store().new Builder();
+    }
+
+    public class Builder {
+
+        private Builder() {
+            // private constructor
+        }
+
+        public Builder categories(List<Category> categories) {
+            Store.this.categories = categories;
+            return this;
+        }
+
+        public Store build() {
+            return Store.this;
+        }
     }
 }
