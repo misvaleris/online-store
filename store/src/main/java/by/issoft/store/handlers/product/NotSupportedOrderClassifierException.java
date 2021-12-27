@@ -1,4 +1,4 @@
-package by.issoft.consoleApp.handlers.product;
+package by.issoft.store.handlers.product;
 
 public class NotSupportedOrderClassifierException extends RuntimeException {
     public NotSupportedOrderClassifierException() {

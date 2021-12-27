@@ -1,10 +1,10 @@
 package by.issoft.consoleApp;
 
-import by.issoft.consoleApp.handlers.CommandHandler;
-import by.issoft.consoleApp.handlers.quit.QuitProgramException;
 import by.issoft.domain.Category;
 import by.issoft.store.RandomStorePopulator;
 import by.issoft.store.Store;
+import by.issoft.store.handlers.CommandHandler;
+import by.issoft.store.handlers.quit.QuitProgramException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;

@@ -1,6 +1,6 @@
-package by.issoft.consoleApp.handlers.product;
+package by.issoft.store.handlers.product;
 
-import by.issoft.consoleApp.handlers.AppCommand;
+import by.issoft.store.handlers.AppCommand;
 import by.issoft.domain.Category;
 import by.issoft.domain.Product;
 import by.issoft.store.Store;

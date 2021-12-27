@@ -1,7 +1,6 @@
-package by.issoft.consoleApp.handlers.product.sort;
+package by.issoft.store.handlers.product.sort;
 
-import by.issoft.consoleApp.StoreApp;
-import by.issoft.consoleApp.handlers.product.SortProductsCommand;
+import by.issoft.store.handlers.product.SortProductsCommand;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -47,7 +46,7 @@ public class GetSortByPriceRateNameProductCommand extends SortProductsCommand {
 
     private File getFileFromResource() throws URISyntaxException {
 
-        ClassLoader classLoader = StoreApp.class.getClassLoader();
+        ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource("sort.xml");
         if (resource == null) {
             throw new IllegalArgumentException("file not found! " + "sort.xml");

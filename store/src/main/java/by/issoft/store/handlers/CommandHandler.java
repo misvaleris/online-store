@@ -1,10 +1,10 @@
-package by.issoft.consoleApp.handlers;
+package by.issoft.store.handlers;
 
-import by.issoft.consoleApp.handlers.order.CreateOrderCommand;
-import by.issoft.consoleApp.handlers.store.print.PrintStoreCommand;
-import by.issoft.consoleApp.handlers.quit.QuitCommand;
-import by.issoft.consoleApp.handlers.product.sort.GetSortByPriceRateNameProductCommand;
-import by.issoft.consoleApp.handlers.product.top.GetTop5ByPriceProductCommand;
+import by.issoft.store.handlers.order.CreateOrderCommand;
+import by.issoft.store.handlers.store.print.PrintStoreCommand;
+import by.issoft.store.handlers.quit.QuitCommand;
+import by.issoft.store.handlers.product.sort.GetSortByPriceRateNameProductCommand;
+import by.issoft.store.handlers.product.top.GetTop5ByPriceProductCommand;
 import by.issoft.store.Store;
 
 import java.util.HashMap;

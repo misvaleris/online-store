@@ -1,4 +1,4 @@
-package by.issoft.consoleApp.handlers;
+package by.issoft.store.handlers;
 
 import by.issoft.store.Store;
 

@@ -1,4 +1,4 @@
-package by.issoft.consoleApp.handlers.order;
+package by.issoft.store.handlers.order;
 
 import by.issoft.domain.Product;
 

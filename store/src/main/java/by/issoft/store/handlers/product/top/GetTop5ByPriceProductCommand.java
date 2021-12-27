@@ -1,6 +1,6 @@
-package by.issoft.consoleApp.handlers.product.top;
+package by.issoft.store.handlers.product.top;
 
-import by.issoft.consoleApp.handlers.product.SortProductsCommand;
+import by.issoft.store.handlers.product.SortProductsCommand;
 import by.issoft.domain.Product;
 
 import java.util.Collections;
