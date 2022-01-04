@@ -2,11 +2,12 @@ package by.issoft.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Category {
+public abstract class Category extends BaseEntity {
     private String name;
-    private List<Product> products = new ArrayList<Product>();
+    private List<Product> products = new ArrayList<>();
 
-    public Category(String name) {
+    public Category(long id, String name) {
+        this.id = id;
         this.name = name;
     }
 

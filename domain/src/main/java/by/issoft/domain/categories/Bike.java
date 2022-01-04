@@ -5,6 +5,6 @@ import by.issoft.domain.Category;
 public class Bike extends Category {
 
     public Bike() {
-        super(Bike.class.getSimpleName());
+        super(1, Bike.class.getSimpleName());
     }
 }

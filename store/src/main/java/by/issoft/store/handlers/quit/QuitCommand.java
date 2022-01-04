@@ -1,6 +1,6 @@
-package by.issoft.consoleApp.handlers.quit;
+package by.issoft.store.handlers.quit;
 
-import by.issoft.consoleApp.handlers.AppCommand;
+import by.issoft.store.handlers.AppCommand;
 import by.issoft.store.Store;
 
 public class QuitCommand implements AppCommand {
