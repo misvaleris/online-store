@@ -3,6 +3,7 @@ package by.issoft.store.handlers.product.sort;
 import by.issoft.store.handlers.product.SortProductsCommand;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -10,6 +11,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
+@Service
 public class GetSortByPriceRateNameProductCommand extends SortProductsCommand {
     private final static XmlMapper XML_MAPPER = new XmlMapper();
 
