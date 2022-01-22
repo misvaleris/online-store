@@ -1,12 +1,11 @@
 package by.issoft.store.handlers.store.print;
 
-import by.issoft.store.handlers.AppCommand;
-import by.issoft.store.Store;
+import by.issoft.domain.Store;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PrintStoreCommand implements AppCommand {
-    @Override
+public class PrintStoreCommand {
+
     public String execute(Store store) {
         return store.toString();
     }
