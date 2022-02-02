@@ -1,15 +1,14 @@
 package by.issoft.store.handlers.product;
 
-import by.issoft.store.handlers.AppCommand;
 import by.issoft.domain.Category;
 import by.issoft.domain.Product;
-import by.issoft.store.Store;
+import by.issoft.domain.Store;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public abstract class SortProductsCommand implements AppCommand {
+public abstract class SortProductsCommand {
     private static final Map<String, Comparator<Product>> AVAILABLE_COMPARATORS
             = new HashMap<String, Comparator<Product>>() {{
 
@@ -20,7 +19,6 @@ public abstract class SortProductsCommand implements AppCommand {
 
     private static final String DESC_SORT = "desc";
 
-    @Override
     public String execute(Store store) {
         Map<String, String> comparatorConfig = getComparatorConfig();
         Comparator<Product> productComparator = buildComparator(comparatorConfig);
@@ -30,13 +28,13 @@ public abstract class SortProductsCommand implements AppCommand {
                 .toString();
     }
 
-    protected Stream<Product> finallyModifyStream(Stream<Product> sortProductsStream){
+    protected Stream<Product> finallyModifyStream(Stream<Product> sortProductsStream) {
         return sortProductsStream;
     }
 
     protected abstract Map<String, String> getComparatorConfig();
 
-    private Comparator<Product> buildComparator(Map<String, String> comparatorConfig){
+    private Comparator<Product> buildComparator(Map<String, String> comparatorConfig) {
         return comparatorConfig.entrySet().stream()
                 .map(this::prepareComparator)
                 .filter(Objects::nonNull)
@@ -49,7 +47,7 @@ public abstract class SortProductsCommand implements AppCommand {
         Comparator<Product> comparator = AVAILABLE_COMPARATORS.getOrDefault(comparatorName, null);
 
         String sortType = entry.getValue();
-        if(DESC_SORT.equals(sortType) && Objects.nonNull(comparator)){
+        if (DESC_SORT.equals(sortType) && Objects.nonNull(comparator)) {
             comparator = comparator.reversed();
         }
         return comparator;

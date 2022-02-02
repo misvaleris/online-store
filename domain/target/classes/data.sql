@@ -1,6 +1,8 @@
-INSERT INTO Category(name) VALUES ('Bike');
-INSERT INTO Category(name)VALUES('Milk');
-INSERT INTO Category(name)VALUES('Phone');
+INSERT INTO Store(name) VALUES ('MILE');
+
+INSERT INTO Category(name, store_id) VALUES ('Bike', 1);
+INSERT INTO Category(name, store_id)VALUES('Milk', 1);
+INSERT INTO Category(name, store_id)VALUES('Phone', 1);
 
 INSERT INTO Product(name,rate,price,category_id) VALUES('LTD',1,10,1);
 INSERT INTO Product(name,rate,price,category_id) VALUES('AIST',2,12,1);
