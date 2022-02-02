@@ -1,27 +1,27 @@
 package by.issoft.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Category extends BaseEntity {
+@Getter
+@Setter
+@Entity
+@NamedEntityGraph(name = "all-products", attributeNodes = @NamedAttributeNode("products"))
+public class Category extends BaseEntity {
     private String name;
+    @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();
-
-    public Category(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
-    public List<Product> getProducts(){
-        return this.products;
-    }
 
     @Override
     public String toString() {
-        return "\n" +"**** " + name + " ****" + "\n" +
+        return "\n" + "**** " + name + " ****" + "\n" +
                 "This category include products:"
                 + "\n" + "\n" + products + "\n" + "\n";
     }

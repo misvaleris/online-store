@@ -1,9 +1,11 @@
 package by.issoft.store.handlers.order;
 
 import by.issoft.domain.Product;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 public class Order {
     private Long orderId;
     private List<Product> products;

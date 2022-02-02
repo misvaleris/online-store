@@ -1,9 +1,19 @@
 package by.issoft.domain;
 
-public abstract class BaseEntity {
-    protected Long id;
+import lombok.Getter;
+import lombok.Setter;
 
-    public Long getId() {
-        return id;
-    }
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Getter
+@Setter
+@MappedSuperclass
+public abstract class BaseEntity {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    public Long id;
 }
